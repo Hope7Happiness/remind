@@ -89,10 +89,12 @@ def access_server(text):
 def local_run(commands):
     status = 'finished'
     try:
+        print('[INFO] Running command:', ' '.join(commands))
         result = subprocess.run(commands)
         if result.returncode != 0:
             status = 'failed'
-    except:
+    except Exception as e:
+        print('[REMIND] Error:', e)
         status = 'failed'
     finally:
         try:

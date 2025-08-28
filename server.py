@@ -13,10 +13,13 @@ from speech_backend import run as speak_text
 
 app = FastAPI()
 
-@app.get('/g/{data}')
-async def pure_remind(data: str):
+def remind_fn(data):
     play_sound()
     speak_text(data)
+
+@app.get('/g/{data}')
+async def pure_remind(data: str):
+    remind_fn(data)
 
 class Task(BaseModel):
     name: str

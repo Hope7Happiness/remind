@@ -2,6 +2,7 @@ import sys
 import subprocess
 import requests
 import os
+from server import remind_fn
 
 def good_print(text, good=True):
     if good:
@@ -98,7 +99,10 @@ def local_run(commands):
         status = 'failed'
     finally:
         try:
-            access_server(f'{commands[0]} has {status}')
+            if check_local():
+                remind_fn(f'{commands[0]} has {status}')
+            else:
+                access_server(f'{commands[0]} has {status}')
         except Exception as e:
             print('[REMIND] Failed to access server:', e)
 

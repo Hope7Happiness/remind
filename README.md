@@ -2,6 +2,11 @@
 
 ## Setup
 
+```bash
+pip install fastapi uvicorn
+sudo apt install espeak
+```
+
 ### Local
 
 1. Setup `sound.mp3` (a playable mp3 file) and `config.py`. The content of `config.py` is:

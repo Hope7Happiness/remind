@@ -3,7 +3,12 @@ from pydantic import BaseModel
 import uvicorn
 import os
 
-from sound_backend import run as play_sound
+try:
+    from sound_backend import run as play_sound
+except ImportError:
+    def play_sound():
+        pass
+
 from speech_backend import run as speak_text
 
 app = FastAPI()

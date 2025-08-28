@@ -1,4 +1,3 @@
-import playsound
 import os
 from common import with_timeout
 
